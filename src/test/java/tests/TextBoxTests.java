@@ -4,8 +4,6 @@ import com.codeborne.selenide.Configuration;
 import static com.codeborne.selenide.Condition.text;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
 public class TextBoxTests {
@@ -23,29 +21,28 @@ public class TextBoxTests {
         void FillFormTest() {
             open("/automation-practice-form");
 
-            $("[id=firstName]").setValue("Dmitry");
-            $("[id=lastName]").setValue("Karpuk");
-            $("[id=userEmail]").setValue("karpdima@mail.com");
+            $("#firstName").setValue("Dmitry");
+            $("#lastName").setValue("Karpuk");
+            $("#userEmail").setValue("karpdima@mail.com");
             $("#gender-radio-1+label").click();
-            $("[id=userNumber]").setValue("8033321517");
+            $("#userNumber").setValue("8033321517");
 
-            $("[id=subjectsInput]").scrollTo();
+            $("#subjectsInput").scrollTo();
 
             $("#dateOfBirthInput").click();
-            $(".react-datepicker__year-select").click();
             $("option[value='1991']").click();
-            $(".react-datepicker__month-select").click();
             $("option[value='5']").click();
             $(".react-datepicker__day--004").click();
 
-            $("#subjectsInput").setValue("en").pressEnter().setValue("mat").pressEnter();
+            $("#subjectsInput").setValue("en").pressEnter();
+            $("#subjectsInput").setValue("mat").pressEnter();
 
             $("#hobbies-checkbox-1+label").click();
             $("#hobbies-checkbox-2+label").click();
             $("#hobbies-checkbox-3+label").click();
             $("#hobbies-checkbox-2+label").click();
 
-            $("#uploadPicture").uploadFromClasspath("cats.jpg"); //добавляем файл с папки resources
+            $("#uploadPicture").uploadFromClasspath("cats.jpg"); //добавляем файл из папки resources
 
             $("#currentAddress").setValue("Belarus");
 
@@ -53,7 +50,6 @@ public class TextBoxTests {
             $("#react-select-4-input").setValue("Panipat").pressEnter();
 
             $("#submit").pressEnter();
-
 
             $(".table-responsive").shouldHave(text("Dmitry Karpuk"));
             $(".table-responsive").shouldHave(text("karpdima@mail.com"));
@@ -66,7 +62,5 @@ public class TextBoxTests {
             $(".table-responsive").shouldHave(text("Belarus"));
             $(".table-responsive").shouldHave(text("Haryana Panipat"));
         }
-
-
 }
 
