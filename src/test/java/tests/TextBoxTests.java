@@ -14,7 +14,7 @@ public class TextBoxTests {
     static void beforeAll(){
         Configuration.browserSize = "1928x1080";  // меняем размер окна браузера
         Configuration.baseUrl = "https://demoqa.com";
-        Configuration.pageLoadStrategy = "eager"; // не дажидаемся полной загрузки страницы сайта
+        Configuration.pageLoadStrategy = "eager"; // не дожидаемся полной загрузки страницы сайта
         Configuration.holdBrowserOpen = true;  // браузер не закроется в конце теста
         Configuration.timeout = 6000; //default 4000
     }
