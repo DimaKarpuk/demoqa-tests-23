@@ -2,9 +2,11 @@ package pages.components;
 
 import com.codeborne.selenide.SelenideElement;
 
+import static com.codeborne.selenide.Condition.cssValue;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
+import static org.openqa.selenium.bidi.browsingcontext.Locator.css;
 
 public class RegistrationPage {
     public RegistrationPage openPage() {
@@ -19,6 +21,7 @@ public class RegistrationPage {
      emailInput = $("#userEmail"),
      genderWrapper = $("#genterWrapper"),
      numberInput = $("#userNumber"),
+     dateOfBirthInput = $("#dateOfBirthInput"),
      subjectsInput = $("#subjectsInput"),
      hobbiesSportsInput = $("#hobbies-checkbox-1+label"),
      hobbiesReadingInput = $("#hobbies-checkbox-2+label"),
@@ -44,7 +47,7 @@ public class RegistrationPage {
         return this;
     }
     public RegistrationPage setGender(String value) {
-        genderWrapper.$(byText("Male")).click();
+        genderWrapper.$(byText(value)).click();
         return this;
     }
     public RegistrationPage setNumber(String value) {
@@ -52,7 +55,7 @@ public class RegistrationPage {
         return this;
     }
     public RegistrationPage setDateOfBirth(String day, String month, String year) {
-        $("#dateOfBirthInput").click();
+        dateOfBirthInput.click();
         CalendarComponent.setDate(day, month, year);
         return this;
     }
@@ -91,6 +94,10 @@ public class RegistrationPage {
     public RegistrationPage tableResponsive(String key, String value){
         tableResponsive.shouldBe(text(key)).parent()
                 .shouldHave(text(value));
+        return this;
+    }
+    public RegistrationPage incorrectResponsive(String property, String expectedValue){
+        numberInput.shouldHave(cssValue(property, expectedValue));
         return this;
     }
 }

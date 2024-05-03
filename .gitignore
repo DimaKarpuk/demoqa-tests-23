@@ -3,7 +3,7 @@ build/
 !**/src/main/**
 !**/src/test/**
 
-### Intellij IDEA ###
+### IntelliJ IDEA ###
 .idea
 *.iws
 *.iml

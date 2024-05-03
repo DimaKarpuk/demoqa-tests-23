@@ -1,8 +1,6 @@
 package tests;
 import org.junit.jupiter.api.Test;
 import pages.components.RegistrationPage;
-
-
 public class TextBoxTests extends TesteBase {
 
     RegistrationPage registrationPage = new RegistrationPage();
@@ -13,7 +11,7 @@ public class TextBoxTests extends TesteBase {
             .setFirstName("Dmitry")
             .setLastName("Karpuk")
             .setEmailName("karpdima@mail.com")
-            .setGender("male")
+            .setGender("Male")
             .setNumber("8033321517")
             .setDateOfBirth("4","June","1991")
             .setSubjects("math")
@@ -35,6 +33,33 @@ public class TextBoxTests extends TesteBase {
             .tableResponsive("Picture","cats.jpg")
             .tableResponsive("Address","Belarus")
             .tableResponsive("State and City","Haryana Panipat");
-        }
-}
 
+        }
+    @Test
+    void partialRegistrationTest(){
+        registrationPage.openPage()
+        .setFirstName("Olga")
+        .setLastName("Davudik")
+        .setGender("Female")
+        .setNumber("8033321517")
+        .setDateOfBirth("10","August","1993")
+        .pressSubmit()
+
+        .tableResponsive("Student Name","Olga Davudik")
+        .tableResponsive("Gender","Female")
+        .tableResponsive("Mobile","8033321517")
+        .tableResponsive("Date of Birth","10 August,1993");
+
+    }
+    @Test
+    void invalidRegistrationTest(){
+        registrationPage.openPage()
+        .setFirstName("Olga")
+        .setLastName("Davudik")
+        .setGender("Female")
+        .setNumber("")
+        .setDateOfBirth("1","August","1993")
+        .pressSubmit()
+        .incorrectResponsive("border-color","rgb(220, 53, 69)");
+    }
+}
