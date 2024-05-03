@@ -92,8 +92,7 @@ public class RegistrationPage {
         return this;
     }
     public RegistrationPage tableResponsive(String key, String value){
-        tableResponsive.shouldBe(text(key)).parent()
-                .shouldHave(text(value));
+        TableResponsive.responsiveTable(key, value);
         return this;
     }
     public RegistrationPage incorrectResponsive(String property, String expectedValue){
