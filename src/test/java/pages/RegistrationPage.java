@@ -1,13 +1,12 @@
-package pages.components;
+package pages;
 
 import com.codeborne.selenide.SelenideElement;
+import pages.components.CalendarComponent;
+import pages.components.TableResponsive;
 
 import static com.codeborne.selenide.Condition.cssValue;
-import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
-import static org.openqa.selenium.bidi.browsingcontext.Locator.css;
-
 public class RegistrationPage {
     public RegistrationPage openPage() {
         open("/automation-practice-form");

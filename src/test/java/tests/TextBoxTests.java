@@ -1,7 +1,7 @@
 package tests;
 import org.junit.jupiter.api.Test;
-import pages.components.RegistrationPage;
-public class TextBoxTests extends TesteBase {
+import pages.RegistrationPage;
+public class TextBoxTests extends TestsBase {
 
     RegistrationPage registrationPage = new RegistrationPage();
 
@@ -55,7 +55,7 @@ public class TextBoxTests extends TesteBase {
     void invalidRegistrationTest(){
         registrationPage.openPage()
         .setFirstName("Olga")
-        .setLastName("Davudik")
+        .setLastName("Karp")
         .setGender("Female")
         .setNumber("")
         .setDateOfBirth("1","August","1993")
