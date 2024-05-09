@@ -3,17 +3,20 @@ package pages;
 import com.codeborne.selenide.SelenideElement;
 import pages.components.CalendarComponent;
 import pages.components.TableResponsive;
+import utils.RandomUtils;
 
 import static com.codeborne.selenide.Condition.cssValue;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
-public class RegistrationPage {
+
+public class RegistrationPage extends RandomUtils {
     public RegistrationPage openPage() {
         open("/automation-practice-form");
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
         return this;
     }
+
     private static
     final SelenideElement firstNameInput = $("#firstName"),
      lastNameInput = $("#lastName"),
@@ -22,8 +25,7 @@ public class RegistrationPage {
      numberInput = $("#userNumber"),
      dateOfBirthInput = $("#dateOfBirthInput"),
      subjectsInput = $("#subjectsInput"),
-     hobbiesSportsInput = $("#hobbies-checkbox-1+label"),
-     hobbiesReadingInput = $("#hobbies-checkbox-2+label"),
+     hobbiesInput = $("#hobbiesWrapper"),
      uploadPicture = $("#uploadPicture"),
      currentAddress = $("#currentAddress"),
      stateInput  = $("#react-select-3-input"),
@@ -62,16 +64,12 @@ public class RegistrationPage {
         subjectsInput.setValue(value).pressEnter();
         return this;
     }
-    public RegistrationPage choiceHobbiesSports(){
-        hobbiesSportsInput.click();
-        return this;
-    }
-    public RegistrationPage choiceHobbiesReading(){
-        hobbiesReadingInput.click();
+    public RegistrationPage choiceHobbies(String value){
+        hobbiesInput.$(byText(value)).click();
         return this;
     }
     public RegistrationPage uploadFrom(String value){
-        uploadPicture.uploadFromClasspath(value);
+        uploadPicture.uploadFromClasspath("jpg/"+value);
         return this;
     }
     public RegistrationPage setAddress(String input){
@@ -94,8 +92,8 @@ public class RegistrationPage {
         TableResponsive.responsiveTable(key, value);
         return this;
     }
-    public RegistrationPage incorrectResponsive(String property, String expectedValue){
-        numberInput.shouldHave(cssValue(property, expectedValue));
+    public RegistrationPage incorrectResponsive(){
+        numberInput.shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
         return this;
     }
 }

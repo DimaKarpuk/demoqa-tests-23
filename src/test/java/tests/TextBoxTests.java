@@ -1,65 +1,68 @@
 package tests;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
-public class TextBoxTests extends TestsBase {
+import utils.RandomUtils;
 
+public class TextBoxTests extends TestsBase {
     RegistrationPage registrationPage = new RegistrationPage();
+    RandomUtils randomUtils = new RandomUtils();
 
         @Test
         void fillFormTest() {
+
             registrationPage.openPage()
-            .setFirstName("Dmitry")
-            .setLastName("Karpuk")
-            .setEmailName("karpdima@mail.com")
-            .setGender("Male")
-            .setNumber("8033321517")
-            .setDateOfBirth("4","June","1991")
-            .setSubjects("math")
-            .choiceHobbiesSports()
-            .choiceHobbiesReading()
-            .uploadFrom("jpg/cats.jpg")
-            .setAddress("Belarus")
-            .setState("Haryana")
-            .setCity("Panipat")
+            .setFirstName(randomUtils.randomFirstName)
+            .setLastName(randomUtils.randomLastName)
+            .setEmailName(randomUtils.randomEmail)
+            .setGender(randomUtils.randomGender)
+            .setNumber(randomUtils.randomPhoneNumb)
+            .setDateOfBirth(randomUtils.randomDay,randomUtils.randomMoth,randomUtils.randomYear)
+            .setSubjects(randomUtils.randomSubjects)
+            .choiceHobbies(randomUtils.randomHobbies)
+            .uploadFrom(randomUtils.randomFileJpg)
+            .setAddress(randomUtils.randomAddress)
+            .setState(randomUtils.randomState)
+            .setCity(randomUtils.randomCity)
             .pressSubmit()
 
-            .tableResponsive("Student Name","Dmitry Karpuk")
-            .tableResponsive("Student Email","karpdima@mail.com")
-            .tableResponsive("Gender","Male")
-            .tableResponsive("Mobile","8033321517")
-            .tableResponsive("Date of Birth","04 June,1991")
-            .tableResponsive("Subjects","Maths")
-            .tableResponsive("Hobbies","Sports, Reading")
-            .tableResponsive("Picture","cats.jpg")
-            .tableResponsive("Address","Belarus")
-            .tableResponsive("State and City","Haryana Panipat");
+            .tableResponsive("Student Name",randomUtils.randomFirstName + " " + randomUtils.randomLastName )
+            .tableResponsive("Student Email",randomUtils.randomEmail)
+            .tableResponsive("Gender",randomUtils.randomGender)
+            .tableResponsive("Mobile",randomUtils.randomPhoneNumb)
+            .tableResponsive("Date of Birth",randomUtils.randomDay + " " + randomUtils.randomMoth
+                    + "," + randomUtils.randomYear)
+            .tableResponsive("Subjects",randomUtils.randomSubjects)
+            .tableResponsive("Hobbies",randomUtils.randomHobbies)
+            .tableResponsive("Picture",randomUtils.randomFileJpg)
+            .tableResponsive("Address",randomUtils.randomAddress)
+            .tableResponsive("State and City",randomUtils.randomState +" " +randomUtils.randomCity);
 
         }
     @Test
     void partialRegistrationTest(){
         registrationPage.openPage()
-        .setFirstName("Olga")
-        .setLastName("Davudik")
-        .setGender("Female")
-        .setNumber("8033321517")
-        .setDateOfBirth("10","August","1993")
+        .setFirstName(randomUtils.randomFirstName)
+        .setLastName(randomUtils.randomLastName)
+        .setGender(randomUtils.randomGender)
+        .setNumber(randomUtils.randomPhoneNumb)
+        .setDateOfBirth(randomUtils.randomDay,randomUtils.randomMoth,randomUtils.randomYear)
         .pressSubmit()
 
-        .tableResponsive("Student Name","Olga Davudik")
-        .tableResponsive("Gender","Female")
-        .tableResponsive("Mobile","8033321517")
-        .tableResponsive("Date of Birth","10 August,1993");
+        .tableResponsive("Student Name",randomUtils.randomFirstName + " " + randomUtils.randomLastName )
+        .tableResponsive("Gender",randomUtils.randomGender)
+        .tableResponsive("Mobile",randomUtils.randomPhoneNumb)
+        .tableResponsive("Date of Birth",randomUtils.randomDay + " " + randomUtils.randomMoth
+                + "," + randomUtils.randomYear);
 
     }
     @Test
     void invalidRegistrationTest(){
         registrationPage.openPage()
-        .setFirstName("Olga")
-        .setLastName("Karp")
-        .setGender("Female")
-        .setNumber("")
-        .setDateOfBirth("1","August","1993")
+        .setFirstName(randomUtils.randomFirstName)
+        .setLastName(randomUtils.randomLastName)
+        .setGender(randomUtils.randomGender)
+        .setDateOfBirth(randomUtils.randomDay,randomUtils.randomMoth,randomUtils.randomYear)
         .pressSubmit()
-        .incorrectResponsive("border-color","rgb(220, 53, 69)");
+        .incorrectResponsive();
     }
 }
