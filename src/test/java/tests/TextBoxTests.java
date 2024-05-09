@@ -36,7 +36,6 @@ public class TextBoxTests extends TestsBase {
             .tableResponsive("Picture",randomUtils.randomFileJpg)
             .tableResponsive("Address",randomUtils.randomAddress)
             .tableResponsive("State and City",randomUtils.randomState +" " +randomUtils.randomCity);
-
         }
     @Test
     void partialRegistrationTest(){
@@ -53,7 +52,6 @@ public class TextBoxTests extends TestsBase {
         .tableResponsive("Mobile",randomUtils.randomPhoneNumb)
         .tableResponsive("Date of Birth",randomUtils.randomDay + " " + randomUtils.randomMoth
                 + "," + randomUtils.randomYear);
-
     }
     @Test
     void invalidRegistrationTest(){
