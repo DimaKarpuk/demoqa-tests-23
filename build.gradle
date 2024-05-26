@@ -31,6 +31,24 @@ dependencies {
     )
 }
 
-test {
+tasks.withType(Test) {
     useJUnitPlatform()
+
+    testLogging {
+        lifecycle {
+            events "started", "skipped", "failed", "standard_error", "standard_out"
+            exceptionFormat "short"
+        }
+    }
+}
+task low_demoqa_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("low")
+    }
+}
+
+task high_demoqa_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("high")
+    }
 }

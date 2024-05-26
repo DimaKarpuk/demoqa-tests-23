@@ -2,6 +2,7 @@ package tests;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 import utils.RandomUtils;
@@ -11,7 +12,7 @@ import static com.codeborne.selenide.logevents.SelenideLogger.step;
 public class TextBoxTests extends TestsBase {
     RegistrationPage registrationPage = new RegistrationPage();
     RandomUtils randomUtils = new RandomUtils();
-
+    @Tag("high")
     @DisplayName("Тест на регистрацию с полными данными")
     @Test
     void fillFormTest() {
@@ -48,6 +49,7 @@ public class TextBoxTests extends TestsBase {
                     .tableResponsive("State and City",randomUtils.randomState +" " +randomUtils.randomCity);
             });
         }
+        @Tag("low")
     @DisplayName("Тест на регистрацию с минимальными данными")
     @Test
     void partialRegistrationTest(){
@@ -72,6 +74,7 @@ public class TextBoxTests extends TestsBase {
                                 + "," + randomUtils.randomYear);
             });
     }
+    @Tag("low")
     @DisplayName("Тест на регистрацию с негативными данными")
     @Test
     void invalidRegistrationTest(){
