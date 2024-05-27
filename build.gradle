@@ -20,6 +20,12 @@ allure {
 repositories {
     mavenCentral()
 }
+compileJava {
+    options.encoding = 'UTF-8'
+}
+compileTestJava {
+    options.encoding = 'UTF-8'
+}
 
 dependencies {
     testImplementation (
@@ -41,14 +47,6 @@ tasks.withType(Test) {
         }
     }
 }
-task low_demoqa_test(type: Test) {
-    useJUnitPlatform {
-        includeTags("low")
-    }
-}
-
-task high_demoqa_test(type: Test) {
-    useJUnitPlatform {
-        includeTags("high")
-    }
+test {
+    useJUnitPlatform()
 }
