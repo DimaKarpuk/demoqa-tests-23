@@ -33,7 +33,6 @@ dependencies {
             'io.qameta.allure:allure-selenide:2.27.0'
     )
 }
-
 tasks.withType(Test) {
     useJUnitPlatform()
 
@@ -44,6 +43,9 @@ tasks.withType(Test) {
         }
     }
 }
-test {
-    useJUnitPlatform()
+
+task simple_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("simple")
+    }
 }

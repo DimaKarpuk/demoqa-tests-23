@@ -72,6 +72,7 @@ public class TextBoxTests extends TestsBase {
                                 + "," + randomUtils.randomYear);
             });
     }
+    @Tag("simple")
     @DisplayName("Тест на регистрацию с негативными данными")
     @Test
     void invalidRegistrationTest(){
