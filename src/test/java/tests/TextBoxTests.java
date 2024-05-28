@@ -46,6 +46,7 @@ public class TextBoxTests extends TestsBase{
                     .tableResponsive("State and City",randomUtils.randomState +" " +randomUtils.randomCity);
             });
         }
+        @Tag("simple")
     @DisplayName("Тест на регистрацию с минимальными данными")
     @Test
     void partialRegistrationTest(){
@@ -83,7 +84,7 @@ public class TextBoxTests extends TestsBase{
                         .setDateOfBirth(randomUtils.randomDay,randomUtils.randomMoth,randomUtils.randomYear)
                         .pressSubmit();
             });
-            step("Проверяем неуспешную регистрацию", () -> {
+            step("Проверяем регистрацию", () -> {
                 registrationPage.incorrectResponsive();
             });
     }
