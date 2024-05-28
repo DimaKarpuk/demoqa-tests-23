@@ -49,3 +49,13 @@ task simple_test(type: Test) {
         includeTags("simple")
     }
 }
+task smoke_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("smoke")
+    }
+}
+task regress_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("regress")
+    }
+}

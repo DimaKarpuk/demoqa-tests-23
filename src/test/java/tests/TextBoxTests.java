@@ -10,7 +10,7 @@ import static io.qameta.allure.Allure.step;
 public class TextBoxTests extends TestsBase{
     RegistrationPage registrationPage = new RegistrationPage();
     RandomUtils randomUtils = new RandomUtils();
-    @Tag("simple")
+    @Tag("smoke")
     @DisplayName("Тест на регистрацию с полными данными")
     @Test
     void fillFormTest() {
@@ -46,7 +46,7 @@ public class TextBoxTests extends TestsBase{
                     .tableResponsive("State and City",randomUtils.randomState +" " +randomUtils.randomCity);
             });
         }
-        @Tag("simple")
+        @Tag("regress")
     @DisplayName("Тест на регистрацию с минимальными данными")
     @Test
     void partialRegistrationTest(){
