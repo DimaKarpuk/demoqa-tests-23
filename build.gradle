@@ -48,19 +48,18 @@ tasks.withType(Test) {
 }
 
 
-task simple_test(type: Test) {
+task fullFilling_test(type: Test) {
     useJUnitPlatform {
-        includeTags("simple")
+        includeTags("fullFill")
     }
 }
-task smoke_test(type: Test) {
+task partialFilling_test(type: Test) {
     useJUnitPlatform {
-        includeTags("smoke")
+        includeTags("partialFilling")
     }
 }
-
-task property_test(type: Test) {
-    useJUnitPlatform{
-        includeTags("property")
+task incorrectFiling_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("incorrectFiling")
     }
 }
