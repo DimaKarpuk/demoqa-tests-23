@@ -12,6 +12,9 @@ import static com.codeborne.selenide.Selenide.*;
 public class RegistrationPage extends RandomUtils {
     public RegistrationPage openPage() {
         open("/automation-practice-form");
+        return this;
+    }
+    public RegistrationPage removeBanner(){
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
         return this;

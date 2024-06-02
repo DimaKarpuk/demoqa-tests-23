@@ -17,6 +17,9 @@ public class TextBoxTests extends TestsBase{
             step("Открываем страницу регистрации", () -> {
                 registrationPage.openPage();
             });
+            step("Убираем банеры", () -> {
+                registrationPage.removeBanner();
+            });
             step("Заполняем форму регистрации с полными данными", () -> {
                 registrationPage.setFirstName(randomUtils.randomFirstName)
                         .setLastName(randomUtils.randomLastName)
@@ -53,6 +56,9 @@ public class TextBoxTests extends TestsBase{
             step("Открываем страницу регистрации", () -> {
                 registrationPage.openPage();
         });
+            step("Убираем банеры", () -> {
+                registrationPage.removeBanner();
+            });
             step("Заполняем успешную форму регистрации с минимальными данными", () -> {
                 registrationPage.setFirstName(randomUtils.randomFirstName)
                         .setLastName(randomUtils.randomLastName)
@@ -77,6 +83,9 @@ public class TextBoxTests extends TestsBase{
             step("Открываем страницу регистрации", () -> {
                 registrationPage.openPage();
             });
+            step("Убираем банеры", () -> {
+            registrationPage.removeBanner();
+        });
             step("Заполняем форму регистрации с неполными данными", () -> {
                 registrationPage.setFirstName(randomUtils.randomFirstName)
                         .setLastName(randomUtils.randomLastName)
