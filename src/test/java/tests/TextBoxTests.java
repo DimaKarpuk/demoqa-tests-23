@@ -93,7 +93,7 @@ public class TextBoxTests extends TestsBase{
                         .setDateOfBirth(randomUtils.randomDay,randomUtils.randomMoth,randomUtils.randomYear)
                         .pressSubmit();
             });
-            step("Проверяем что мы не прошли регистрацию", () -> {
+            step("Проверяем что мы не прошли регистрацию с неполными данными", () -> {
                 registrationPage.incorrectResponsive();
             });
     }
